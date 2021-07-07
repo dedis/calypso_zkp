@@ -61,7 +61,7 @@ int check_proof(Write *write, const unsigned char *write_policy) {
 
 	// Note that the reduce method below requires 2x memory allocation
 	// easy to miss... wasted 3 hours :)
-	unsigned char hash[2*crypto_hash_sha256_BYTES] = {0};
+	unsigned char hash[crypto_core_ed25519_NONREDUCEDSCALARBYTES] = {0};
 	crypto_hash_sha256_final(&state, hash);
 
 	// ensure we reduce it mod L
