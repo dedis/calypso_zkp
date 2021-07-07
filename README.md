@@ -53,3 +53,7 @@ $ ./check_proof
 
 proof invalid
 ```
+
+### Dependencies
+
+* Libsodium 1.0.18-stable
