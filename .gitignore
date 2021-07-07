@@ -1,0 +1,4 @@
+*.o
+*.dat
+check_proof
+create_write
