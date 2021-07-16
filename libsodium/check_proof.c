@@ -10,18 +10,25 @@ int check_proof(Write *write, const unsigned char *write_policy) {
 		fprintf(stderr, "error Gf\n");
 		return -1;
 	}
+	printf("Gf: ");
+	print_hex(Gf, 32);
+	
 
 	unsigned char Ue[crypto_core_ed25519_BYTES] = {0};
 	if (crypto_scalarmult_ed25519_noclamp(Ue, write->e, write->U) != 0) {
 		fprintf(stderr, "error Ue\n");
 		return -1;
 	}
+	printf("Ue: ");
+	print_hex(Ue, 32);
 
 	unsigned char W[crypto_core_ed25519_BYTES] = {0};
 	if (crypto_core_ed25519_sub(W, Gf, Ue) != 0) {
 		fprintf(stderr, "error W\n");
 		return -1;
 	}
+	printf("W: ");
+	print_hex(W, 32);
 
 	unsigned char Gbar[crypto_core_ed25519_BYTES] = {0};
 	if (embed_data(write->LTSID, randombytes_SEEDBYTES, Gbar, write->LTSID) != 0) {
@@ -130,7 +137,7 @@ int main(void) {
 	size_t bin_len = WRITE_POLICY_SIZE;
 
 	if (sodium_hex2bin(write_policy, sizeof write_policy,
-			"C6FB3DEE39ACA8AE09893F37CCE08FAD1561628E0B00B615DB9DC8AA1136CFAA",
+			"CCF5DF3E08BD12993B3F084C485355CE6BF0B015CCF86D3BE230AF434452C221",
 			64, NULL, &bin_len, NULL)) {
 		return -2;
 	}
