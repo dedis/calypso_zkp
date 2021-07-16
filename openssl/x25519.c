@@ -8,6 +8,10 @@
  */
 
 /*
+ * This file is adapted from https://github.com/openssl/openssl/blob/master/crypto/ec/curve25519.c
+ */
+
+/*
  * ECDSA low level APIs are deprecated for public use, but still ok for
  * internal use.
  */
